@@ -20,8 +20,13 @@ body, html {
 .particle-animation {
     margin: 0;
     background: rgba(255,255,255,0.1);
-    padding: 100px;
+    width: 500px;
+    height: 500px;
     border-radius: 50%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .particle-animation .cell {
@@ -40,4 +45,19 @@ body, html {
     height: 30%;
     background: #95bce4;
     border-radius: 50%;
+}
+
+.particle-animation > svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+/* TESTING */
+
+#shapes {
+    position: relative;
+    z-index: 100;;
 }
