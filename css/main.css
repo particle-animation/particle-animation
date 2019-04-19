@@ -29,45 +29,5 @@ body, html {
 }
 
 .particles {
-    position: absolute;
-    z-index: 100;
     border-radius: 50%;
-}
-
-.cell {
-    position: relative;
-    z-index: 150;;
-}
-
-.particle-animation .cell {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 200px;
-    height: 200px;
-    background: #eff6fd;
-    border-radius: 50%;
-    border: 2px solid #8dc9ea;
-}
-
-.particle-animation .cell__core {
-    width: 30%;
-    height: 30%;
-    background: #95bce4;
-    border-radius: 50%;
-}
-
-.particle-animation > svg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-}
-
-/* TESTING */
-
-#shapes {
-    position: relative;
-    z-index: 100;;
 }
