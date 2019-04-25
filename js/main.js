@@ -11,19 +11,71 @@ var canvasSizes = {
 w = ctx.canvas.width = canvasSizes.width;
 h = ctx.canvas.height = canvasSizes.height;
 
+var positions =  [
+    {
+        'x' : 10,
+        'y' : 10,
+    },
+    {
+        'x' : 10,
+        'y' : h/2,
+    },
+    {
+        'x' : 10,
+        'y' : h/3,
+    },
+    {
+        'x' : 10,
+        'y' : h - 10,
+    },
+    {
+        'x': w - 10,
+        'y': h/7,
+    },
+    {
+        'x': w - 10,
+        'y': h / 4,
+    },
+    {
+        'x': w - 10,
+        'y': h / 2,
+    },
+    {
+        'x': w /2,
+        'y': 10,
+    },
+    {
+        'x': w / 4,
+        'y': 10,
+    },
+    {
+        'x': w * 0.75,
+        'y': 10,
+    },
+    {
+        'x': w * 0.75,
+        'y': h - 10,
+    },
+    {
+        'x': w / 2,
+        'y': h - 10,
+    },
+]
+
+
 // Variables
 particles = [];
-maxParticles = 40;
+maxParticles = 30;
 radius = 10;
 
 // Once this function is called it will push Objects with multiple Properties into the particles Array
 function createParticles() {
     // Push Particle Objects into the array
     for (var i = 0; i < maxParticles; i++) {
-        var diff = 400; // add 1 if inclusive
+        var randomPosition = Math.floor(Math.random() * positions.length);
         particles.push({
-            x: Math.random() * ((w + radius) - radius) + radius, //Random Position between 0 and w(canvas-width)
-            y: Math.random() * ((h + radius) - radius) + radius, // Same here for height
+            x: positions[randomPosition].x, //Random Position between 0 and w(canvas-width)
+            y: positions[randomPosition].y, // Same here for height
             xv: Math.random() * 2 - 1, // X-Velocity
             yv: Math.random() * 2 - 1 // Y-Velocity
         });
@@ -39,7 +91,7 @@ function draw() {
     for (var i = 0; i < particles.length; i++) {
         ctx.beginPath();
         // Use the X-Position to Color the Particle
-        ctx.fillStyle = "hsla(0 , 0%, 100%, 1)";
+        ctx.fillStyle = "cae8f7";
         // arc parameters: X-Pos, Y,Pos, Radius, Angle(2*PI = 360°)
         ctx.arc(particles[i].x, particles[i].y, radius, 0, Math.PI * 2);
         ctx.fill();
