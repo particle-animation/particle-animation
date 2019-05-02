@@ -21,184 +21,184 @@ ddebf8
 */
 var particlesData =  [
     {
-        'x' : 50,
-        'y' : 50,
-        'r' : 6,
-        'color': '#8dceea'
+        'x' : 100,
+        'y' : 130,
+        'r' : 9,
+        'color': '#cee0f4'
     },
     {
         'x': 40,
-        'y': h/2,
-        'r': 8,
+        'y': h/2-30,
+        'r': 9,
         'color': '#8ccfea'
     },
     {
-        'x': 65,
-        'y': h/2-50,
-        'r': 6,
+        'x': 70,
+        'y': h/2-65,
+        'r': 7,
         'color': '#cde1f5'
     },
     {
-        'x': 15,
-        'y': h/2-20,
-        'r': 7,
+        'x': 12,
+        'y': h/2-35,
+        'r': 6,
         'color': '#e2f3f9'
     },
     {
-        'x': 10,
-        'y': 10,
-        'r': 9,
-        'color': '#cae8f7'
+        'x': 20,
+        'y': 115,
+        'r': 7,
+        'color': '#dfe9f7'
     },
     {
-        'x': 10,
-        'y': 10,
-        'r': 9,
-        'color': '#cae8f7'
+        'x': 110,
+        'y': 40,
+        'r':6,
+        'color': '#ddebf8'
     },
     {
-        'x': 10,
+        'x': w/2-10,
         'y': 10,
-        'r': 9,
-        'color': '#cae8f7'
+        'r': 6,
+        'color': '#e0e9f6'
     },
     {
-        'x': 10,
-        'y': 10,
-        'r': 9,
-        'color': '#cae8f7'
+        'x': w/2-20,
+        'y': 60,
+        'r': 10,
+        'color': '#95c5e9'
     },
     {
-        'x': 10,
-        'y': 10,
-        'r': 9,
-        'color': '#cae8f7'
+        'x': w/2+60,
+        'y': 55,
+        'r': 10,
+        'color': '#6bbcf0'
     },
     {
-        'x': 10,
-        'y': 10,
-        'r': 9,
-        'color': '#cae8f7'
+        'x': w / 2 + 70,
+        'y': 30,
+        'r': 6,
+        'color': '#cedff3'
     },
     {
-        'x': 10,
+        'x': w / 2 + 150,
         'y': 10,
-        'r': 9,
-        'color': '#cae8f7'
+        'r': 6,
+        'color': '#e0e9f6'
     },
     {
-        'x': 10,
-        'y': 10,
+        'x': w / 2 + 120,
+        'y': 110,
         'r': 9,
-        'color': '#cae8f7'
+        'color': '#cbe2f6'
     },
     {
-        'x': 10,
-        'y': 10,
-        'r': 9,
-        'color': '#cae8f7'
+        'x': w / 2 + 160,
+        'y': 130,
+        'r': 7,
+        'color': '#cae3f6'
     },
     {
-        'x': 10,
-        'y': 10,
-        'r': 9,
-        'color': '#cae8f7'
+        'x': w / 2 + 160,
+        'y': 170,
+        'r': 7,
+        'color': '#8cceea'
     },
     {
-        'x': 10,
-        'y': 10,
-        'r': 9,
-        'color': '#cae8f7'
+        'x': w / 2 + 180,
+        'y': 60,
+        'r': 5,
+        'color': '#e0e9f6'
     },
     {
-        'x': 10,
-        'y': 10,
-        'r': 9,
-        'color': '#cae8f7'
+        'x': w/2 + 150,
+        'y': h/2 + 110,
+        'r': 10,
+        'color': '#6bbcf0'
     },
     {
-        'x': 10,
-        'y': 10,
-        'r': 9,
-        'color': '#cae8f7'
+        'x': w / 2 + 120,
+        'y': h / 2 + 160,
+        'r': 8,
+        'color': '#cedff3'
     },
     {
-        'x': 10,
-        'y': 10,
-        'r': 9,
-        'color': '#cae8f7'
+        'x': w - 20,
+        'y': h / 2 + 110,
+        'r': 6,
+        'color': '#daeff9'
     },
     {
-        'x': 10,
-        'y': 10,
-        'r': 9,
-        'color': '#cae8f7'
+        'x': w / 2 + 50,
+        'y': h / 2 + 170,
+        'r': 8,
+        'color': '#cedff3'
     },
     {
-        'x': 10,
-        'y': 10,
-        'r': 9,
-        'color': '#cae8f7'
+        'x': w / 2 + 50,
+        'y': h - 20,
+        'r': 6,
+        'color': '#dcecf9'
     },
     {
-        'x': 10,
-        'y': 10,
-        'r': 9,
-        'color': '#cae8f7'
+        'x': w - 50,
+        'y': h - 40,
+        'r': 6,
+        'color': '#dcecf9'
     },
     {
-        'x': 10,
-        'y': 10,
-        'r': 9,
-        'color': '#cae8f7'
+        'x': w / 2 - 50,
+        'y': h / 2 + 180,
+        'r': 10,
+        'color': '#6bbcf0'
     },
     {
-        'x': 10,
-        'y': 10,
-        'r': 9,
-        'color': '#cae8f7'
+        'x': w / 2 - 70,
+        'y': h - 30,
+        'r': 8,
+        'color': '#deeaf7'
     },
     {
-        'x': 10,
-        'y': 10,
-        'r': 9,
-        'color': '#cae8f7'
+        'x': w / 2 - 20,
+        'y': h - 35,
+        'r': 6,
+        'color': '#deeaf7'
     },
     {
-        'x': 10,
-        'y': 10,
-        'r': 9,
-        'color': '#cae8f7'
+        'x': w / 2 - 100,
+        'y': h / 2 + 180,
+        'r': 6,
+        'color': '#cee0f4'
     },
     {
-        'x': 10,
-        'y': 10,
-        'r': 9,
-        'color': '#cae8f7'
+        'x': w / 2 - 150,
+        'y': h / 2 + 140,
+        'r': 7,
+        'color': '#9ac2e7'
     },
     {
-        'x': 10,
-        'y': 10,
-        'r': 9,
-        'color': '#cae8f7'
+        'x': w / 2 - 140,
+        'y': h-30,
+        'r': 6,
+        'color': '#daeefa'
     },
     {
-        'x': 10,
-        'y': 10,
-        'r': 9,
-        'color': '#cae8f7'
+        'x': w / 2 - 180,
+        'y': h/2 + 100,
+        'r': 8,
+        'color': '#daeefa'
     },
     {
-        'x': 10,
-        'y': 10,
-        'r': 9,
-        'color': '#cae8f7'
+        'x': 20,
+        'y': h / 2 + 130,
+        'r': 6,
+        'color': '#daeefa'
     },
     {
-        'x': 10,
-        'y': 10,
-        'r': 9,
-        'color': '#cae8f7'
+        'x': 50,
+        'y': h-80,
+        'r': 7,
+        'color': '#daeefa'
     },
 
 
@@ -216,8 +216,8 @@ function createParticles() {
         particles.push({
             x: particlesData[i].x,
             y: particlesData[i].y,
-            xv: 0,//Math.random() * 2 - 1, // X-Velocity
-            yv: 0//Math.random() * 2 - 1 // Y-Velocity
+            xv: Math.random() * 4 - 2, // X-Velocity
+            yv: Math.random() * 4 - 2 // Y-Velocity
         });
     }
 }
@@ -291,9 +291,9 @@ function collision() {
             // Because we invert only the Velocity of the Axis the Particle hits, we dont need to calculate the new direction
         }
 
-        if (Math.sqrt((canvasSizes.width/2 - particles[i].x) * (canvasSizes.width/2 - particles[i].x) + (canvasSizes.width/2- particles[i].y) * (canvasSizes.width/2- particles[i].y)) < 150 + 7) {
-            particles[i].xv = -particles[i].xv;
-            particles[i].yv = -particles[i].yv;
+        if (Math.sqrt((canvasSizes.width / 2 - particles[i].x) * (canvasSizes.width / 2 - particles[i].x) + (canvasSizes.width / 2 - particles[i].y) * (canvasSizes.width / 2 - particles[i].y)) < 150 + particlesData[i].r) {
+            particles[i].xv = - particles[i].xv;
+            particles[i].yv = - particles[i].yv;
         }
         // Same for the Y-Axis
         if (particles[i].y - particlesData[i].r < 0 || particles[i].y + particlesData[i].r > h) {
