@@ -10,15 +10,7 @@ var canvasSizes = {
 // w and h are Vars corresponding to the Window Size
 w = ctx.canvas.width = canvasSizes.width;
 h = ctx.canvas.height = canvasSizes.height;
-/*
-c9e6f6
-8cceea
-cde1f5
-8dceea
-daedf9
-e2f3f9
-ddebf8
-*/
+
 var particlesData =  [
     {
         'x' : 100,
@@ -207,7 +199,7 @@ var particlesData =  [
 
 // Variables
 particles = [];
-maxParticles = 30;
+maxParticles = 1;
 
 // Once this function is called it will push Objects with multiple Properties into the particles Array
 function createParticles() {
@@ -270,17 +262,6 @@ function render() {
     requestAnimationFrame(render);
 }
 
-var circle1 = { radius: 150, x: 150, y: 150 };
-var circle2 = { radius: 12, x: 10, y: 5 };
-
-var dx = circle1.x - circle2.x;
-var dy = circle1.y - circle2.y;
-var distance = Math.sqrt(dx * dx + dy * dy);
-
-if (distance < circle1.radius + circle2.radius) {
-    // collision detected!
-}
-
 function collision() {
     for (var i = 0; i < particles.length; i++) {
 
@@ -300,6 +281,58 @@ function collision() {
             particles[i].yv = -particles[i].yv;
         }
     }
+}
+
+function animate() {
+    var point = points[currentFrame++];
+    draw(point.x, point.y);
+
+    // refire the timer until out-of-points
+    if (currentFrame < points.length) {
+        timer = setTimeout(animate, 1000 / 60);
+    }
+}
+
+function linePoints(x1, y1, x2, y2, frames) {
+    var dx = x2 - x1;
+    var dy = y2 - y1;
+    var length = Math.sqrt(dx * dx + dy * dy);
+    var incrementX = dx / frames;
+    var incrementY = dy / frames;
+    var a = new Array();
+
+    a.push({
+        x: x1,
+        y: y1
+    });
+    for (var frame = 0; frame < frames - 1; frame++) {
+        a.push({
+            x: x1 + (incrementX * frame),
+            y: y1 + (incrementY * frame)
+        });
+    }
+    a.push({
+        x: x2,
+        y: y2
+    });
+    return (a);
+}
+
+function handleMouseDown(e) {
+    mouseX = parseInt(e.clientX - offsetX);
+    mouseY = parseInt(e.clientY - offsetY);
+    console.log("Down: " + mouseX + " / " + mouseY)
+
+    // Put your mousedown stuff here
+    points = linePoints(currentX, currentY, mouseX, mouseY, frameCount);
+    currentFrame = 0;
+    currentX = mouseX;
+    currentY = mouseY;
+    animate();
+}
+
+canvas.onmousedown = function(e) {
+     handleMouseDown(e)
 }
 
 createParticles();
