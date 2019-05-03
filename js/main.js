@@ -335,5 +335,21 @@ canvas.onmousedown = function(e) {
      handleMouseDown(e)
 }
 
+canvas.onmousemove = function (e) {
+
+    // important: correct mouse position:
+    var rect = this.getBoundingClientRect(),
+        mouseX = e.clientX - rect.left,
+        mouseY = e.clientY - rect.top,
+        i = 0, r;
+
+
+    if ((mouseX <= 300 && mouseX >= 200) && (mouseY <= 300 && mouseY >= 200) ) {
+        console.log('hovering');
+    }
+
+
+};
+
 createParticles();
 render();
