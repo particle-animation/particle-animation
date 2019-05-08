@@ -1,11 +1,15 @@
 // Canvas Setup
-var canvas = document.querySelector('#particles');
+var canvas = document.querySelector('#canvas');
 var ctx = canvas.getContext("2d");
 
 var canvasSizes = {
     'width': 500,
     'height': 500,
 }
+
+// create a flag controlling if the animation will continue or stop
+var continueAnimating = true;
+var stopFinalAnimation;
 
 // w and h are Vars corresponding to the Window Size
 w = ctx.canvas.width = canvasSizes.width;
@@ -199,7 +203,11 @@ var particlesData =  [
 
 // Variables
 particles = [];
-maxParticles = 1;
+maxParticles = 30;
+
+// animating vars
+var pct = 0;
+var startX, startY, endX, endY, dx, dy;
 
 // Once this function is called it will push Objects with multiple Properties into the particles Array
 function createParticles() {
@@ -246,6 +254,41 @@ function draw() {
     ctx.fill();
 }
 
+function drawFinal() {
+    // Clear the Canvas before we render the next image
+    ctx.clearRect(0, 0, w, h);
+    // Keep in mind this function is called 60x per second
+
+    // Loop each particle
+    for (var i = 0; i < particles.length; i++) {
+        ctx.beginPath();
+
+        ctx.fillStyle = particlesData[i].color;
+        // arc parameters: X-Pos, Y,Pos, Radius, Angle(2*PI = 360°)
+        ctx.arc(particles[i].x, particles[i].y, particlesData[i].r, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.closePath();
+
+    }
+
+    ctx.beginPath();
+    ctx.arc(canvasSizes.width / 2, canvasSizes.height / 2, 150, 0, 2 * Math.PI);
+    ctx.strokeStyle = "#8dc9ea";
+    ctx.lineWidth = 5;
+    ctx.stroke();
+    ctx.fillStyle = "#eff6fd";
+    ctx.fill();
+    ctx.closePath();
+
+    ctx.beginPath();
+    ctx.arc(canvasSizes.width / 2, canvasSizes.height / 2, 40, 0, 2 * Math.PI);
+    ctx.stroke();
+    ctx.fillStyle = "#95bce4";
+    ctx.fill();
+
+
+}
+
 function move() {
     for (var i = 0; i < particles.length; i++) {
         // Move each Particle by its very own Speed Factor
@@ -254,12 +297,38 @@ function move() {
     }
 }
 
+function moveFinal() {
+    if (++pct < 1200) {
+        for (var i = 0; i < particles.length; i++) {
+
+            dx = w / 2 - particles[i].x;
+            dy = h / 2 - particles[i].y;
+
+            // update
+            particles[i].x = particles[i].x + dx * pct / 1200;
+            particles[i].y = particles[i].y + dy * pct / 1200;
+        }
+    } else {
+        stopFinalAnimation = true;
+    }
+}
+
+
 // move and draw will be executed 60 times per second
 function render() {
     move();
     draw();
     collision();
+    if (!continueAnimating) { return; };
     requestAnimationFrame(render);
+}
+
+// move and draw will be executed 60 times per second
+function renderToCenter() {
+    moveFinal();
+    drawFinal();
+    if(stopFinalAnimation) { return; };
+    requestAnimationFrame(renderToCenter);
 }
 
 function collision() {
@@ -283,59 +352,7 @@ function collision() {
     }
 }
 
-function animate() {
-    var point = points[currentFrame++];
-    draw(point.x, point.y);
-
-    // refire the timer until out-of-points
-    if (currentFrame < points.length) {
-        timer = setTimeout(animate, 1000 / 60);
-    }
-}
-
-function linePoints(x1, y1, x2, y2, frames) {
-    var dx = x2 - x1;
-    var dy = y2 - y1;
-    var length = Math.sqrt(dx * dx + dy * dy);
-    var incrementX = dx / frames;
-    var incrementY = dy / frames;
-    var a = new Array();
-
-    a.push({
-        x: x1,
-        y: y1
-    });
-    for (var frame = 0; frame < frames - 1; frame++) {
-        a.push({
-            x: x1 + (incrementX * frame),
-            y: y1 + (incrementY * frame)
-        });
-    }
-    a.push({
-        x: x2,
-        y: y2
-    });
-    return (a);
-}
-
-function handleMouseDown(e) {
-    mouseX = parseInt(e.clientX - offsetX);
-    mouseY = parseInt(e.clientY - offsetY);
-    console.log("Down: " + mouseX + " / " + mouseY)
-
-    // Put your mousedown stuff here
-    points = linePoints(currentX, currentY, mouseX, mouseY, frameCount);
-    currentFrame = 0;
-    currentX = mouseX;
-    currentY = mouseY;
-    animate();
-}
-
-canvas.onmousedown = function(e) {
-     handleMouseDown(e)
-}
-
-canvas.onmousemove = function (e) {
+canvas.onmousedown = function (e) {
 
     // important: correct mouse position:
     var rect = this.getBoundingClientRect(),
@@ -345,11 +362,15 @@ canvas.onmousemove = function (e) {
 
 
     if ((mouseX <= 300 && mouseX >= 200) && (mouseY <= 300 && mouseY >= 200) ) {
-        console.log('hovering');
+        continueAnimating = false;
+
+        renderToCenter();
     }
+
 
 
 };
 
 createParticles();
 render();
+
