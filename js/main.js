@@ -15,191 +15,192 @@ var stopFinalAnimation;
 w = ctx.canvas.width = canvasSizes.width;
 h = ctx.canvas.height = canvasSizes.height;
 
-var particlesData =  [
-    {
-        'x' : 100,
-        'y' : 130,
-        'r' : 9,
-        'color': '#cee0f4'
-    },
-    {
-        'x': 40,
-        'y': h/2-30,
-        'r': 9,
-        'color': '#8ccfea'
-    },
-    {
-        'x': 70,
-        'y': h/2-65,
-        'r': 7,
-        'color': '#cde1f5'
-    },
-    {
-        'x': 12,
-        'y': h/2-35,
-        'r': 6,
-        'color': '#e2f3f9'
-    },
-    {
-        'x': 20,
-        'y': 115,
-        'r': 7,
-        'color': '#dfe9f7'
-    },
-    {
-        'x': 110,
-        'y': 40,
-        'r':6,
-        'color': '#ddebf8'
-    },
-    {
-        'x': w/2-10,
-        'y': 10,
-        'r': 6,
-        'color': '#e0e9f6'
-    },
-    {
-        'x': w/2-20,
-        'y': 60,
-        'r': 10,
-        'color': '#95c5e9'
-    },
-    {
-        'x': w/2+60,
-        'y': 55,
-        'r': 10,
-        'color': '#6bbcf0'
-    },
-    {
-        'x': w / 2 + 70,
-        'y': 30,
-        'r': 6,
-        'color': '#cedff3'
-    },
-    {
-        'x': w / 2 + 150,
-        'y': 10,
-        'r': 6,
-        'color': '#e0e9f6'
-    },
-    {
-        'x': w / 2 + 120,
-        'y': 110,
-        'r': 9,
-        'color': '#cbe2f6'
-    },
-    {
-        'x': w / 2 + 160,
-        'y': 130,
-        'r': 7,
-        'color': '#cae3f6'
-    },
-    {
-        'x': w / 2 + 160,
-        'y': 170,
-        'r': 7,
-        'color': '#8cceea'
-    },
-    {
-        'x': w / 2 + 180,
-        'y': 60,
-        'r': 5,
-        'color': '#e0e9f6'
-    },
-    {
-        'x': w/2 + 150,
-        'y': h/2 + 110,
-        'r': 10,
-        'color': '#6bbcf0'
-    },
-    {
-        'x': w / 2 + 120,
-        'y': h / 2 + 160,
-        'r': 8,
-        'color': '#cedff3'
-    },
-    {
-        'x': w - 20,
-        'y': h / 2 + 110,
-        'r': 6,
-        'color': '#daeff9'
-    },
-    {
-        'x': w / 2 + 50,
-        'y': h / 2 + 170,
-        'r': 8,
-        'color': '#cedff3'
-    },
-    {
-        'x': w / 2 + 50,
-        'y': h - 20,
-        'r': 6,
-        'color': '#dcecf9'
-    },
-    {
-        'x': w - 50,
-        'y': h - 40,
-        'r': 6,
-        'color': '#dcecf9'
-    },
-    {
-        'x': w / 2 - 50,
-        'y': h / 2 + 180,
-        'r': 10,
-        'color': '#6bbcf0'
-    },
-    {
-        'x': w / 2 - 70,
-        'y': h - 30,
-        'r': 8,
-        'color': '#deeaf7'
-    },
-    {
-        'x': w / 2 - 20,
-        'y': h - 35,
-        'r': 6,
-        'color': '#deeaf7'
-    },
-    {
-        'x': w / 2 - 100,
-        'y': h / 2 + 180,
-        'r': 6,
-        'color': '#cee0f4'
-    },
-    {
-        'x': w / 2 - 150,
-        'y': h / 2 + 140,
-        'r': 7,
-        'color': '#9ac2e7'
-    },
-    {
-        'x': w / 2 - 140,
-        'y': h-30,
-        'r': 6,
-        'color': '#daeefa'
-    },
-    {
-        'x': w / 2 - 180,
-        'y': h/2 + 100,
-        'r': 8,
-        'color': '#daeefa'
-    },
-    {
-        'x': 20,
-        'y': h / 2 + 130,
-        'r': 6,
-        'color': '#daeefa'
-    },
-    {
-        'x': 50,
-        'y': h-80,
-        'r': 7,
-        'color': '#daeefa'
-    },
+var particlesData = [];
 
-
-]
-
+function startingPosition() {
+    particlesData = [
+        {
+            'x': 100,
+            'y': 130,
+            'r': 9,
+            'color': '#cee0f4'
+        },
+        {
+            'x': 40,
+            'y': h / 2 - 30,
+            'r': 9,
+            'color': '#8ccfea'
+        },
+        {
+            'x': 70,
+            'y': h / 2 - 65,
+            'r': 7,
+            'color': '#cde1f5'
+        },
+        {
+            'x': 12,
+            'y': h / 2 - 35,
+            'r': 6,
+            'color': '#e2f3f9'
+        },
+        {
+            'x': 20,
+            'y': 115,
+            'r': 7,
+            'color': '#dfe9f7'
+        },
+        {
+            'x': 110,
+            'y': 40,
+            'r': 6,
+            'color': '#ddebf8'
+        },
+        {
+            'x': w / 2 - 10,
+            'y': 10,
+            'r': 6,
+            'color': '#e0e9f6'
+        },
+        {
+            'x': w / 2 - 20,
+            'y': 60,
+            'r': 10,
+            'color': '#95c5e9'
+        },
+        {
+            'x': w / 2 + 60,
+            'y': 55,
+            'r': 10,
+            'color': '#6bbcf0'
+        },
+        {
+            'x': w / 2 + 70,
+            'y': 30,
+            'r': 6,
+            'color': '#cedff3'
+        },
+        {
+            'x': w / 2 + 150,
+            'y': 10,
+            'r': 6,
+            'color': '#e0e9f6'
+        },
+        {
+            'x': w / 2 + 120,
+            'y': 110,
+            'r': 9,
+            'color': '#cbe2f6'
+        },
+        {
+            'x': w / 2 + 160,
+            'y': 130,
+            'r': 7,
+            'color': '#cae3f6'
+        },
+        {
+            'x': w / 2 + 160,
+            'y': 170,
+            'r': 7,
+            'color': '#8cceea'
+        },
+        {
+            'x': w / 2 + 180,
+            'y': 60,
+            'r': 5,
+            'color': '#e0e9f6'
+        },
+        {
+            'x': w / 2 + 150,
+            'y': h / 2 + 110,
+            'r': 10,
+            'color': '#6bbcf0'
+        },
+        {
+            'x': w / 2 + 120,
+            'y': h / 2 + 160,
+            'r': 8,
+            'color': '#cedff3'
+        },
+        {
+            'x': w - 20,
+            'y': h / 2 + 110,
+            'r': 6,
+            'color': '#daeff9'
+        },
+        {
+            'x': w / 2 + 50,
+            'y': h / 2 + 170,
+            'r': 8,
+            'color': '#cedff3'
+        },
+        {
+            'x': w / 2 + 50,
+            'y': h - 20,
+            'r': 6,
+            'color': '#dcecf9'
+        },
+        {
+            'x': w - 50,
+            'y': h - 40,
+            'r': 6,
+            'color': '#dcecf9'
+        },
+        {
+            'x': w / 2 - 50,
+            'y': h / 2 + 180,
+            'r': 10,
+            'color': '#6bbcf0'
+        },
+        {
+            'x': w / 2 - 70,
+            'y': h - 30,
+            'r': 8,
+            'color': '#deeaf7'
+        },
+        {
+            'x': w / 2 - 20,
+            'y': h - 35,
+            'r': 6,
+            'color': '#deeaf7'
+        },
+        {
+            'x': w / 2 - 100,
+            'y': h / 2 + 180,
+            'r': 6,
+            'color': '#cee0f4'
+        },
+        {
+            'x': w / 2 - 150,
+            'y': h / 2 + 140,
+            'r': 7,
+            'color': '#9ac2e7'
+        },
+        {
+            'x': w / 2 - 140,
+            'y': h - 30,
+            'r': 6,
+            'color': '#daeefa'
+        },
+        {
+            'x': w / 2 - 180,
+            'y': h / 2 + 100,
+            'r': 8,
+            'color': '#daeefa'
+        },
+        {
+            'x': 20,
+            'y': h / 2 + 130,
+            'r': 6,
+            'color': '#daeefa'
+        },
+        {
+            'x': 50,
+            'y': h - 80,
+            'r': 7,
+            'color': '#daeefa'
+        },
+    ]
+}
 
 // Variables
 particles = [];
@@ -212,6 +213,7 @@ var startX, startY, endX, endY, dx, dy;
 // Once this function is called it will push Objects with multiple Properties into the particles Array
 function createParticles() {
     // Push Particle Objects into the array
+    startingPosition();
     for (var i = 0; i < maxParticles; i++) {
         particles.push({
             x: particlesData[i].x,
@@ -263,7 +265,12 @@ function drawFinal() {
     for (var i = 0; i < particles.length; i++) {
         ctx.beginPath();
 
-        ctx.fillStyle = particlesData[i].color;
+        if (Math.sqrt((canvasSizes.width / 2 - particles[i].x) * (canvasSizes.width / 2 - particles[i].x) + (canvasSizes.width / 2 - particles[i].y) * (canvasSizes.width / 2 - particles[i].y)) < 150 + particlesData[i].r) {
+            ctx.fillStyle = "#8dc9ea";
+        } else {
+            ctx.fillStyle = particlesData[i].color;
+        }
+
         // arc parameters: X-Pos, Y,Pos, Radius, Angle(2*PI = 360°)
         ctx.arc(particles[i].x, particles[i].y, particlesData[i].r, 0, Math.PI * 2);
         ctx.fill();
@@ -297,19 +304,26 @@ function move() {
     }
 }
 
+var randomSpeedNumber,randomSpeed;
+
 function moveFinal() {
-    if (++pct < 1200) {
+    pct++;
+    if (pct < 120) {
         for (var i = 0; i < particles.length; i++) {
 
             dx = w / 2 - particles[i].x;
             dy = h / 2 - particles[i].y;
 
+            randomSpeed = i * 5;
+
             // update
-            particles[i].x = particles[i].x + dx * pct / 1200;
-            particles[i].y = particles[i].y + dy * pct / 1200;
+            particles[i].x = particles[i].x + dx/randomSpeed  ;
+            particles[i].y = particles[i].y + dy/randomSpeed  ;
         }
     } else {
         stopFinalAnimation = true;
+        continueAnimating = true;
+        render();
     }
 }
 
@@ -319,7 +333,7 @@ function render() {
     move();
     draw();
     collision();
-    if (!continueAnimating) { return; };
+    if (continueAnimating == false) { return; };
     requestAnimationFrame(render);
 }
 
@@ -356,21 +370,22 @@ canvas.onmousedown = function (e) {
 
     // important: correct mouse position:
     var rect = this.getBoundingClientRect(),
-        mouseX = e.clientX - rect.left,
-        mouseY = e.clientY - rect.top,
-        i = 0, r;
+        mouseX = e.clientX - rect.left;
+        mouseY = e.clientY - rect.top;
 
 
     if ((mouseX <= 300 && mouseX >= 200) && (mouseY <= 300 && mouseY >= 200) ) {
+
         continueAnimating = false;
 
+
         renderToCenter();
+
+    } else {
+        continueAnimating = true;
+        render();
     }
 
-
-
 };
-
 createParticles();
 render();
-
