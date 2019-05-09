@@ -212,8 +212,8 @@ var startX, startY, endX, endY, dx, dy;
 
 // Once this function is called it will push Objects with multiple Properties into the particles Array
 function createParticles() {
+    particles = [];
     // Push Particle Objects into the array
-    startingPosition();
     for (var i = 0; i < maxParticles; i++) {
         particles.push({
             x: particlesData[i].x,
@@ -246,7 +246,7 @@ function draw() {
     ctx.strokeStyle = "#8dc9ea";
     ctx.lineWidth = 5;
     ctx.stroke();
-    ctx.fillStyle = "#eff6fd";
+    ctx.fillStyle = "rgba(239, 246, 253,1)";
     ctx.fill();
 
     ctx.beginPath();
@@ -264,9 +264,9 @@ function drawFinal() {
     // Loop each particle
     for (var i = 0; i < particles.length; i++) {
         ctx.beginPath();
-
         if (Math.sqrt((canvasSizes.width / 2 - particles[i].x) * (canvasSizes.width / 2 - particles[i].x) + (canvasSizes.width / 2 - particles[i].y) * (canvasSizes.width / 2 - particles[i].y)) < 150 + particlesData[i].r) {
             ctx.fillStyle = "#8dc9ea";
+
         } else {
             ctx.fillStyle = particlesData[i].color;
         }
@@ -276,22 +276,24 @@ function drawFinal() {
         ctx.fill();
         ctx.closePath();
 
+        ctx.beginPath();
+        ctx.arc(canvasSizes.width / 2, canvasSizes.height / 2, 150, 0, 2 * Math.PI);
+        ctx.strokeStyle = "#8dc9ea";
+        ctx.lineWidth = 5;
+        ctx.stroke();
+        ctx.fillStyle = "rgba(239, 280, 253,1)";
+        ctx.fill();
+        ctx.closePath();
+
+        ctx.beginPath();
+        ctx.arc(canvasSizes.width / 2, canvasSizes.height / 2, 40, 0, 2 * Math.PI);
+        ctx.stroke();
+        ctx.fillStyle = "#95bce4";
+        ctx.fill();
+
     }
 
-    ctx.beginPath();
-    ctx.arc(canvasSizes.width / 2, canvasSizes.height / 2, 150, 0, 2 * Math.PI);
-    ctx.strokeStyle = "#8dc9ea";
-    ctx.lineWidth = 5;
-    ctx.stroke();
-    ctx.fillStyle = "#eff6fd";
-    ctx.fill();
-    ctx.closePath();
 
-    ctx.beginPath();
-    ctx.arc(canvasSizes.width / 2, canvasSizes.height / 2, 40, 0, 2 * Math.PI);
-    ctx.stroke();
-    ctx.fillStyle = "#95bce4";
-    ctx.fill();
 
 
 }
@@ -320,10 +322,6 @@ function moveFinal() {
             particles[i].x = particles[i].x + dx/randomSpeed  ;
             particles[i].y = particles[i].y + dy/randomSpeed  ;
         }
-    } else {
-        stopFinalAnimation = true;
-        continueAnimating = true;
-        render();
     }
 }
 
@@ -333,7 +331,7 @@ function render() {
     move();
     draw();
     collision();
-    if (continueAnimating == false) { return; };
+    if (continueAnimating === false) { return; };
     requestAnimationFrame(render);
 }
 
@@ -341,7 +339,7 @@ function render() {
 function renderToCenter() {
     moveFinal();
     drawFinal();
-    if(stopFinalAnimation) { return; };
+    if(stopFinalAnimation === true) { return; }
     requestAnimationFrame(renderToCenter);
 }
 
@@ -366,6 +364,8 @@ function collision() {
     }
 }
 
+var audio = new Audio('audio/blop.wav');
+
 canvas.onmousedown = function (e) {
 
     // important: correct mouse position:
@@ -375,17 +375,21 @@ canvas.onmousedown = function (e) {
 
 
     if ((mouseX <= 300 && mouseX >= 200) && (mouseY <= 300 && mouseY >= 200) ) {
-
         continueAnimating = false;
-
-
+        stopFinalAnimation = false;
+        audio.play();
+        pct = 0;
         renderToCenter();
 
     } else {
+        startingPosition();
+        createParticles();
         continueAnimating = true;
+        stopFinalAnimation = true;
         render();
     }
 
 };
+startingPosition();
 createParticles();
 render();
