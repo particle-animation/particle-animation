@@ -20,191 +20,190 @@ var particlesData = [];
 function startingPosition() {
     particlesData = [
         {
-            'x': 100,
-            'y': 130,
-            'r': 9,
-            'color': '#cee0f4'
-        },
-        {
-            'x': 40,
-            'y': h / 2 - 30,
-            'r': 9,
-            'color': '#8ccfea'
-        },
-        {
             'x': 70,
             'y': h / 2 - 65,
             'r': 7,
-            'color': '#cde1f5'
+            'color': '#cde1f5',
+            'xv': Math.random() * 4 - 2,
+            'yv': Math.random() * 4 - 2,
         },
         {
             'x': 12,
             'y': h / 2 - 35,
             'r': 6,
-            'color': '#e2f3f9'
+            'color': '#e2f3f9',
+            'xv': Math.random() * 4 - 2,
+            'yv': Math.random() * 4 - 2,
         },
         {
             'x': 20,
             'y': 115,
             'r': 7,
-            'color': '#dfe9f7'
+            'color': '#dfe9f7',
+            'xv': Math.random() * 4 - 2,
+            'yv': Math.random() * 4 - 2,
         },
         {
             'x': 110,
             'y': 40,
             'r': 6,
-            'color': '#ddebf8'
+            'color': '#ddebf8',
+            'xv': Math.random() * 4 - 2,
+            'yv': Math.random() * 4 - 2,
         },
         {
             'x': w / 2 - 10,
             'y': 10,
             'r': 6,
-            'color': '#e0e9f6'
+            'color': '#e0e9f6',
+            'xv': Math.random() * 4 - 2,
+            'yv': Math.random() * 4 - 2,
         },
         {
             'x': w / 2 - 20,
             'y': 60,
             'r': 10,
-            'color': '#95c5e9'
+            'color': '#95c5e9',
+            'xv': Math.random() * 4 - 2,
+            'yv': Math.random() * 4 - 2,
         },
         {
             'x': w / 2 + 60,
             'y': 55,
             'r': 10,
-            'color': '#6bbcf0'
+            'color': '#6bbcf0',
+            'xv': Math.random() * 4 - 2,
+            'yv': Math.random() * 4 - 2,
         },
         {
             'x': w / 2 + 70,
             'y': 30,
             'r': 6,
-            'color': '#cedff3'
+            'color': '#cedff3',
+            'xv': Math.random() * 4 - 2,
+            'yv': Math.random() * 4 - 2,
         },
         {
             'x': w / 2 + 150,
             'y': 10,
             'r': 6,
-            'color': '#e0e9f6'
+            'color': '#e0e9f6',
+            'xv': Math.random() * 4 - 2,
+            'yv': Math.random() * 4 - 2,
         },
         {
             'x': w / 2 + 120,
             'y': 110,
             'r': 9,
-            'color': '#cbe2f6'
+            'color': '#cbe2f6',
+            'xv': Math.random() * 4 - 2,
+            'yv': Math.random() * 4 - 2,
         },
         {
             'x': w / 2 + 160,
             'y': 130,
             'r': 7,
-            'color': '#cae3f6'
+            'color': '#cae3f6',
+            'xv': Math.random() * 4 - 2,
+            'yv': Math.random() * 4 - 2,
         },
         {
             'x': w / 2 + 160,
             'y': 170,
             'r': 7,
-            'color': '#8cceea'
+            'color': '#8cceea',
+            'xv': Math.random() * 4 - 2,
+            'yv': Math.random() * 4 - 2,
         },
-        {
-            'x': w / 2 + 180,
-            'y': 60,
-            'r': 5,
-            'color': '#e0e9f6'
-        },
-        {
-            'x': w / 2 + 150,
-            'y': h / 2 + 110,
-            'r': 10,
-            'color': '#6bbcf0'
-        },
+
         {
             'x': w / 2 + 120,
             'y': h / 2 + 160,
             'r': 8,
-            'color': '#cedff3'
+            'color': '#cedff3',
+            'xv': Math.random() * 4 - 2,
+            'yv': Math.random() * 4 - 2,
         },
         {
             'x': w - 20,
             'y': h / 2 + 110,
             'r': 6,
-            'color': '#daeff9'
+            'color': '#daeff9',
+            'xv': Math.random() * 4 - 2,
+            'yv': Math.random() * 4 - 2,
         },
         {
             'x': w / 2 + 50,
             'y': h / 2 + 170,
             'r': 8,
-            'color': '#cedff3'
+            'color': '#cedff3',
+            'xv': Math.random() * 4 - 2,
+            'yv': Math.random() * 4 - 2,
         },
         {
             'x': w / 2 + 50,
             'y': h - 20,
             'r': 6,
-            'color': '#dcecf9'
+            'color': '#dcecf9',
+            'xv': Math.random() * 4 - 2,
+            'yv': Math.random() * 4 - 2,
         },
         {
             'x': w - 50,
             'y': h - 40,
             'r': 6,
-            'color': '#dcecf9'
+            'color': '#dcecf9',
+            'xv': Math.random() * 4 - 2,
+            'yv': Math.random() * 4 - 2,
         },
-        {
-            'x': w / 2 - 50,
-            'y': h / 2 + 180,
-            'r': 10,
-            'color': '#6bbcf0'
-        },
-        {
-            'x': w / 2 - 70,
-            'y': h - 30,
-            'r': 8,
-            'color': '#deeaf7'
-        },
+
         {
             'x': w / 2 - 20,
             'y': h - 35,
             'r': 6,
-            'color': '#deeaf7'
+            'color': '#deeaf7',
+            'xv': Math.random() * 4 - 2,
+            'yv': Math.random() * 4 - 2,
         },
         {
             'x': w / 2 - 100,
             'y': h / 2 + 180,
             'r': 6,
-            'color': '#cee0f4'
+            'color': '#cee0f4',
+            'xv': Math.random() * 4 - 2,
+            'yv': Math.random() * 4 - 2,
         },
         {
             'x': w / 2 - 150,
             'y': h / 2 + 140,
             'r': 7,
-            'color': '#9ac2e7'
+            'color': '#9ac2e7',
+            'xv': Math.random() * 4 - 2,
+            'yv': Math.random() * 4 - 2,
         },
         {
             'x': w / 2 - 140,
             'y': h - 30,
             'r': 6,
-            'color': '#daeefa'
+            'color': '#daeefa',
+            'xv': Math.random() * 4 - 2,
+            'yv': Math.random() * 4 - 2,
         },
         {
             'x': w / 2 - 180,
             'y': h / 2 + 100,
             'r': 8,
-            'color': '#daeefa'
+            'color': '#daeefa',
+            'xv': Math.random() * 4 - 2,
+            'yv': Math.random() * 4 - 2,
         },
-        {
-            'x': 20,
-            'y': h / 2 + 130,
-            'r': 6,
-            'color': '#daeefa'
-        },
-        {
-            'x': 50,
-            'y': h - 80,
-            'r': 7,
-            'color': '#daeefa'
-        },
+
     ]
 }
 
 // Variables
 particles = [];
-maxParticles = 30;
+maxParticles = 20;
 
 // animating vars
 var pct = 0;
@@ -218,8 +217,8 @@ function createParticles() {
         particles.push({
             x: particlesData[i].x,
             y: particlesData[i].y,
-            xv: Math.random() * 4 - 2, // X-Velocity
-            yv: Math.random() * 4 - 2 // Y-Velocity
+            xv: particlesData[i].xv, // X-Velocity
+            yv: particlesData[i].yv // Y-Velocity
         });
     }
 }
@@ -281,9 +280,8 @@ function drawFinal() {
         ctx.strokeStyle = "#8dc9ea";
         ctx.lineWidth = 5;
         ctx.stroke();
-        ctx.fillStyle = "rgba(239, 280, 253,1)";
+        ctx.fillStyle = "rgba(239, 246, 253,1)";
         ctx.fill();
-        ctx.closePath();
 
         ctx.beginPath();
         ctx.arc(canvasSizes.width / 2, canvasSizes.height / 2, 40, 0, 2 * Math.PI);
@@ -295,6 +293,7 @@ function drawFinal() {
 
 }
 
+
 function move() {
     for (var i = 0; i < particles.length; i++) {
         // Move each Particle by its very own Speed Factor
@@ -302,8 +301,6 @@ function move() {
         particles[i].y += particles[i].yv;
     }
 }
-
-var randomSpeedNumber,randomSpeed;
 
 function moveFinal() {
     pct++;
@@ -313,11 +310,11 @@ function moveFinal() {
             dx = w / 2 - particles[i].x;
             dy = h / 2 - particles[i].y;
 
-            speedFactor = 300;
+            speedFactor = 200;
 
             // update
-            particles[i].x = particles[i].x + dx/speedFactor  ;
-            particles[i].y = particles[i].y + dy/speedFactor  ;
+            particles[i].x +=  dx/speedFactor  ;
+            particles[i].y +=  dy/speedFactor  ;
         }
     }
 }
@@ -331,6 +328,7 @@ function render() {
     if (continueAnimating === false) { return; };
     requestAnimationFrame(render);
 }
+
 
 // move and draw will be executed 60 times per second
 function renderToCenter() {
@@ -361,8 +359,8 @@ function collision() {
     }
 }
 
+var done = false;
 function run_once(f) {
-    var done = false;
     return function () {
         if (!done) {
             done = true;
@@ -397,6 +395,7 @@ canvas.onmousedown = function (e) {
     continueAnimating = true;
     stopFinalAnimation = true;
     render();
+    done = false;
 };
 startingPosition();
 createParticles();
