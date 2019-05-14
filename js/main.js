@@ -293,9 +293,6 @@ function drawFinal() {
 
     }
 
-
-
-
 }
 
 function move() {
@@ -310,17 +307,17 @@ var randomSpeedNumber,randomSpeed;
 
 function moveFinal() {
     pct++;
-    if (pct < 120) {
+    if (pct < 500) {
         for (var i = 0; i < particles.length; i++) {
 
             dx = w / 2 - particles[i].x;
             dy = h / 2 - particles[i].y;
 
-            randomSpeed = i * 5;
+            speedFactor = 300;
 
             // update
-            particles[i].x = particles[i].x + dx/randomSpeed  ;
-            particles[i].y = particles[i].y + dy/randomSpeed  ;
+            particles[i].x = particles[i].x + dx/speedFactor  ;
+            particles[i].y = particles[i].y + dy/speedFactor  ;
         }
     }
 }
@@ -364,31 +361,42 @@ function collision() {
     }
 }
 
-var audio = new Audio('audio/blop.wav');
+function run_once(f) {
+    var done = false;
+    return function () {
+        if (!done) {
+            done = true;
+            return f.apply(this, arguments);
+        }
+    };
+}
 
-canvas.onmousedown = function (e) {
+canvas.onmousemove = function (e) {
 
     // important: correct mouse position:
     var rect = this.getBoundingClientRect(),
         mouseX = e.clientX - rect.left;
         mouseY = e.clientY - rect.top;
 
-
     if ((mouseX <= 300 && mouseX >= 200) && (mouseY <= 300 && mouseY >= 200) ) {
-        continueAnimating = false;
-        stopFinalAnimation = false;
-        audio.play();
-        pct = 0;
-        renderToCenter();
-
-    } else {
-        startingPosition();
-        createParticles();
-        continueAnimating = true;
-        stopFinalAnimation = true;
-        render();
+        whenHoverOnCenter();
     }
 
+};
+
+var whenHoverOnCenter = run_once(function () {
+    continueAnimating = false;
+    stopFinalAnimation = false;
+    pct = 0;
+    renderToCenter();
+});
+
+canvas.onmousedown = function (e) {
+    startingPosition();
+    createParticles();
+    continueAnimating = true;
+    stopFinalAnimation = true;
+    render();
 };
 startingPosition();
 createParticles();
