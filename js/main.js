@@ -201,6 +201,27 @@ function startingPosition() {
     ]
 }
 
+const throttle = (func, limit) => {
+    let lastFunc
+    let lastRan
+    return function () {
+        const context = this
+        const args = arguments
+        if (!lastRan) {
+            func.apply(context, args)
+            lastRan = Date.now()
+        } else {
+            clearTimeout(lastFunc)
+            lastFunc = setTimeout(function () {
+                if ((Date.now() - lastRan) >= limit) {
+                    func.apply(context, args)
+                    lastRan = Date.now()
+                }
+            }, limit - (Date.now() - lastRan))
+        }
+    }
+}
+
 // Variables
 particles = [];
 maxParticles = 20;
@@ -352,6 +373,7 @@ function collision() {
             particles[i].xv = - particles[i].xv;
             particles[i].yv = - particles[i].yv;
         }
+
         // Same for the Y-Axis
         if (particles[i].y - particlesData[i].r < 0 || particles[i].y + particlesData[i].r > h) {
             particles[i].yv = -particles[i].yv;
@@ -369,18 +391,6 @@ function run_once(f) {
     };
 }
 
-canvas.onmousemove = function (e) {
-
-    // important: correct mouse position:
-    var rect = this.getBoundingClientRect(),
-        mouseX = e.clientX - rect.left;
-        mouseY = e.clientY - rect.top;
-
-    if ((mouseX <= 300 && mouseX >= 200) && (mouseY <= 300 && mouseY >= 200) ) {
-        whenHoverOnCenter();
-    }
-
-};
 
 var whenHoverOnCenter = run_once(function () {
     continueAnimating = false;
@@ -389,14 +399,30 @@ var whenHoverOnCenter = run_once(function () {
     renderToCenter();
 });
 
-canvas.onmousedown = function (e) {
-    startingPosition();
-    createParticles();
-    continueAnimating = true;
-    stopFinalAnimation = true;
-    render();
-    done = false;
-};
+
+canvas.addEventListener('mousemove', throttle(function (e) {
+    // important: correct mouse position:
+    var rect = this.getBoundingClientRect(),
+        mouseX = e.clientX - rect.left;
+        mouseY = e.clientY - rect.top;
+
+    if ((mouseX <= 300 && mouseX >= 200) && (mouseY <= 300 && mouseY >= 200)) {
+        whenHoverOnCenter();
+    } else {
+        if(done === true) {
+            startingPosition();
+            createParticles();
+            continueAnimating = true;
+            stopFinalAnimation = true;
+            done = false;
+            render();
+        }
+    }
+
+}, 500));
+
+
+
 startingPosition();
 createParticles();
 render();
