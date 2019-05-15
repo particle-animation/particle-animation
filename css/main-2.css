@@ -17,14 +17,21 @@ body, html {
 
 /* Particle CSS */
 .particle-animation {
+    position: absolute;
+    z-index: 1;
     margin: 0;
-    width: 400px;
-    height: 400px;
-    position: relative;
+    width: 500px;
+    height: 500px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+.particle-animation *:last-child {
+    position: absolute;
+}
+
 .particles {
+    position: relative;
+    z-index: 2;
 }

@@ -7,6 +7,8 @@ var canvasSizes = {
     'height': 500,
 }
 
+var animationContainer = document.querySelector('.particle-animation');
+
 // create a flag controlling if the animation will continue or stop
 var continueAnimating = true;
 var stopFinalAnimation;
@@ -261,20 +263,15 @@ function draw() {
         ctx.closePath();
     }
 
-    ctx.beginPath();
-    ctx.arc(canvasSizes.width/2, canvasSizes.height/2, 150, 0, 2 * Math.PI);
-    ctx.strokeStyle = "#8dc9ea";
-    ctx.lineWidth = 5;
-    ctx.stroke();
-    ctx.fillStyle = "rgba(239, 246, 253,1)";
-    ctx.fill();
 
-    ctx.beginPath();
-    ctx.arc(canvasSizes.width/2, canvasSizes.height/2, 40, 0, 2 * Math.PI);
-    ctx.stroke();
-    ctx.fillStyle = "#95bce4";
-    ctx.fill();
 }
+
+var cellX = canvasSizes.width / 2;
+var cellY = canvasSizes.height / 2;
+
+var innerCellX = canvasSizes.width / 2;
+var innerCellY = canvasSizes.height / 2;
+
 
 function drawFinal() {
     // Clear the Canvas before we render the next image
@@ -285,31 +282,14 @@ function drawFinal() {
     for (var i = 0; i < particles.length; i++) {
         ctx.beginPath();
         if (Math.sqrt((canvasSizes.width / 2 - particles[i].x) * (canvasSizes.width / 2 - particles[i].x) + (canvasSizes.width / 2 - particles[i].y) * (canvasSizes.width / 2 - particles[i].y)) < 150 + particlesData[i].r) {
-            ctx.fillStyle = "#8dc9ea";
-
+            ctx.fillStyle = "#4694E2";
         } else {
             ctx.fillStyle = particlesData[i].color;
         }
-
         // arc parameters: X-Pos, Y,Pos, Radius, Angle(2*PI = 360°)
         ctx.arc(particles[i].x, particles[i].y, particlesData[i].r, 0, Math.PI * 2);
         ctx.fill();
         ctx.closePath();
-
-        ctx.beginPath();
-        ctx.arc(canvasSizes.width / 2, canvasSizes.height / 2, 150, 0, 2 * Math.PI);
-        ctx.strokeStyle = "#8dc9ea";
-        ctx.lineWidth = 5;
-        ctx.stroke();
-        ctx.fillStyle = "rgba(239, 246, 253,1)";
-        ctx.fill();
-
-        ctx.beginPath();
-        ctx.arc(canvasSizes.width / 2, canvasSizes.height / 2, 40, 0, 2 * Math.PI);
-        ctx.stroke();
-        ctx.fillStyle = "#95bce4";
-        ctx.fill();
-
     }
 
 }
@@ -325,16 +305,16 @@ function move() {
 
 function moveFinal() {
     pct++;
-    if (pct < 500) {
+    if (pct < 400) {
         for (var i = 0; i < particles.length; i++) {
 
             dx = w / 2 - particles[i].x;
             dy = h / 2 - particles[i].y;
 
-            speedFactor = 200;
+            speedFactor = 50;
 
             // update
-            particles[i].x +=  dx/speedFactor  ;
+            particles[i].x += dx / speedFactor;
             particles[i].y +=  dy/speedFactor  ;
         }
     }
@@ -397,8 +377,15 @@ var whenHoverOnCenter = run_once(function () {
     stopFinalAnimation = false;
     pct = 0;
     renderToCenter();
+    if (!two.playing) {
+        two
+        .bind('resize', resize)
+        .bind('update', function () {
+            physics.update();
+        })
+        .play();
+    }
 });
-
 
 canvas.addEventListener('mousemove', throttle(function (e) {
     // important: correct mouse position:
@@ -408,21 +395,87 @@ canvas.addEventListener('mousemove', throttle(function (e) {
 
     if ((mouseX <= 300 && mouseX >= 200) && (mouseY <= 300 && mouseY >= 200)) {
         whenHoverOnCenter();
-    } else {
-        if(done === true) {
-            startingPosition();
-            createParticles();
-            continueAnimating = true;
-            stopFinalAnimation = true;
-            done = false;
-            render();
-        }
+        animationContainer.classList.add('active');
     }
 
 }, 500));
 
 
-
 startingPosition();
 createParticles();
 render();
+
+var two = new Two({
+    type: Two.Types.svg,
+    width: 500,
+    height: 500,
+}).appendTo(animationContainer);
+
+var mass = 300;
+var radius = 110;
+var strength = 0.1;
+var drag = 0.05;
+
+var background = two.makeGroup();
+var foreground = two.makeGroup();
+
+var physics = new Physics();
+var points = [];
+var i = 0;
+
+for (i = 0; i < Two.Resolution; i++) {
+
+    var pct = i / Two.Resolution;
+    var theta = pct * Math.PI * 2;
+
+    var ax = radius * Math.cos(theta);
+    var ay = radius * Math.sin(theta);
+
+    var variance = Math.random() * 0.5 + 0.5;
+    var bx = 0.9 * ax;
+    var by = 0.9 * ay;
+
+    var origin = physics.makeParticle(mass, ax, ay)
+    var particle = physics.makeParticle(Math.random() * mass * 0.33 + mass * 0.33, bx, by);
+    var spring = physics.makeSpring(particle, origin, strength, drag, 0);
+
+    origin.makeFixed();
+
+    particle.shape = two.makeCircle(particle.position.x, particle.position.y, 5);
+    particle.shape.noStroke().fill = '#fff';
+    particle.position = particle.shape.translation;
+
+    foreground.add(particle.shape)
+    points.push(particle.position);
+
+}
+
+var outer = new Two.Path(points, true, true);
+var color = '#eff6fd';
+outer.stroke = '#4694E2';
+outer.fill = color.toString(0.5);
+outer.scale = 1.50;
+outer.linewidth = 3;
+
+background.add(outer);
+
+var inner = new Two.Path(points, true, true);
+inner.noStroke();
+inner.fill = '#4694E2';
+inner.scale = 0.4;
+
+background.add(inner);
+
+resize();
+
+function resize() {
+    background.translation.set(two.width / 2, two.height / 2);
+    foreground.translation.copy(background.translation);
+}
+
+ two
+     .bind('resize', resize)
+     .bind('update', function () {
+         physics.update();
+     })
+     .render()
