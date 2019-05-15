@@ -450,10 +450,16 @@ for (i = 0; i < Two.Resolution; i++) {
 
 }
 
+var radius = 100;
+var stops = [
+    new Two.Stop(0, 'rgba(193, 221, 249, 1)'),
+    new Two.Stop(2, 'rgba(193, 221, 249, 0)')
+];
+
 var outer = new Two.Path(points, true, true);
 var color = '#eff6fd';
 outer.stroke = '#4694E2';
-outer.fill = color.toString(0.5);
+outer.fill = new Two.RadialGradient(0, 0, radius, stops);
 outer.scale = 1.50;
 outer.linewidth = 3;
 
