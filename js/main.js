@@ -3,8 +3,8 @@ var canvas = document.querySelector('#canvas');
 var ctx = canvas.getContext("2d");
 
 var canvasSizes = {
-    'width': 500,
-    'height': 500,
+    'width': 400,
+    'height': 400,
 }
 
 var animationContainer = document.querySelector('.particle-animation');
@@ -27,81 +27,81 @@ function startingPosition() {
             'y': 115,
             'r': 7,
             'color': '#dfe9f7',
-            'xv': Math.random() * 4 - 2,
-            'yv': Math.random() * 4 - 2,
+            'xv': Math.random() * 0.5 - 0.2,
+            'yv': Math.random() * 0.5 - 0.2,
         },
         {
             'x': w / 2 + 60,
-            'y': 55,
+            'y': 25,
             'r': 10,
             'color': '#6bbcf0',
-            'xv': Math.random() * 4 - 2,
-            'yv': Math.random() * 4 - 2,
+            'xv': Math.random() * 0.5 - 0.2,
+            'yv': Math.random() * 0.5 - 0.2,
         },
         {
             'x': w / 2 - 150,
             'y': h / 2 + 140,
             'r': 7,
             'color': '#9ac2e7',
-            'xv': Math.random() * 4 - 2,
-            'yv': Math.random() * 4 - 2,
+            'xv': Math.random() * 0.5 - 0.2,
+            'yv': Math.random() * 0.5 - 0.2,
         },
         {
             'x': 110,
             'y': 40,
             'r': 6,
             'color': '#ddebf8',
-            'xv': Math.random() * 4 - 2,
-            'yv': Math.random() * 4 - 2,
+            'xv': Math.random() * 0.5 - 0.2,
+            'yv': Math.random() * 0.5 - 0.2,
         },
         {
             'x': w / 2 - 10,
             'y': 10,
             'r': 6,
             'color': '#e0e9f6',
-            'xv': Math.random() * 4 - 2,
-            'yv': Math.random() * 4 - 2,
+            'xv': Math.random() * 0.5 - 0.2,
+            'yv': Math.random() * 0.5 - 0.2,
         },
         {
             'x': w / 2 - 20,
             'y': h - 35,
             'r': 6,
             'color': '#deeaf7',
-            'xv': Math.random() * 4 - 2,
-            'yv': Math.random() * 4 - 2,
+            'xv': Math.random() * 0.5 - 0.2,
+            'yv': Math.random() * 0.5 - 0.2,
         },
         {
             'x': w / 2 - 100,
             'y': h / 2 + 180,
             'r': 6,
             'color': '#cee0f4',
-            'xv': Math.random() * 4 - 2,
-            'yv': Math.random() * 4 - 2,
+            'xv': Math.random() * 0.5 - 0.2,
+            'yv': Math.random() * 0.5 - 0.2,
         },
         {
             'x': w / 2 + 160,
             'y': 130,
             'r': 7,
             'color': '#cae3f6',
-            'xv': Math.random() * 4 - 2,
-            'yv': Math.random() * 4 - 2,
+            'xv': Math.random() * 0.5 - 0.2,
+            'yv': Math.random() * 0.5 - 0.2,
         },
         {
             'x': w / 2 + 160,
             'y': 170,
             'r': 7,
             'color': '#8cceea',
-            'xv': Math.random() * 4 - 2,
-            'yv': Math.random() * 4 - 2,
+            'xv': Math.random() * 0.5 - 0.2,
+            'yv': Math.random() * 0.5 - 0.2,
         },
 
         {
             'x': w / 2 - 20,
-            'y': 60,
+            'y': 10,
             'r': 10,
             'color': '#95c5e9',
-            'xv': Math.random() * 4 - 2,
-            'yv': Math.random() * 4 - 2,
+            'xv': Math.random() * 0.5 - 0.2,
+            'yv': Math.random() * 0.5 - 0.2,
         },
 
         {
@@ -109,16 +109,16 @@ function startingPosition() {
             'y': h - 30,
             'r': 6,
             'color': '#daeefa',
-            'xv': Math.random() * 4 - 2,
-            'yv': Math.random() * 4 - 2,
+            'xv': Math.random() * 0.5 - 0.2,
+            'yv': Math.random() * 0.5 - 0.2,
         },
         {
             'x': w / 2 - 180,
             'y': h / 2 + 100,
             'r': 8,
             'color': '#daeefa',
-            'xv': Math.random() * 4 - 2,
-            'yv': Math.random() * 4 - 2,
+            'xv': Math.random() * 0.5 - 0.2,
+            'yv': Math.random() * 0.5 - 0.2,
         },
 
         {
@@ -126,24 +126,24 @@ function startingPosition() {
             'y': 30,
             'r': 6,
             'color': '#cedff3',
-            'xv': Math.random() * 4 - 2,
-            'yv': Math.random() * 4 - 2,
+            'xv': Math.random() * 0.5 - 0.2,
+            'yv': Math.random() * 0.5 - 0.2,
         },
         {
             'x': w / 2 + 150,
             'y': 10,
             'r': 6,
-            'color': '#e0e9f6',
-            'xv': Math.random() * 4 - 2,
-            'yv': Math.random() * 4 - 2,
+            'color': '#87c9ef',
+            'xv': Math.random() * 0.5 - 0.2,
+            'yv': Math.random() * 0.5 - 0.2,
         },
         {
             'x': w / 2 + 120,
             'y': 110,
             'r': 9,
-            'color': '#cbe2f6',
-            'xv': Math.random() * 4 - 2,
-            'yv': Math.random() * 4 - 2,
+            'color': '#87c9ef',
+            'xv': Math.random() * 0.5 - 0.2,
+            'yv': Math.random() * 0.5 - 0.2,
         },
 
         {
@@ -151,56 +151,56 @@ function startingPosition() {
             'y': h / 2 + 160,
             'r': 8,
             'color': '#cedff3',
-            'xv': Math.random() * 4 - 2,
-            'yv': Math.random() * 4 - 2,
+            'xv': Math.random() * 0.5 - 0.2,
+            'yv': Math.random() * 0.5 - 0.2,
         },
         {
             'x': w - 20,
             'y': h / 2 + 110,
             'r': 6,
             'color': '#daeff9',
-            'xv': Math.random() * 4 - 2,
-            'yv': Math.random() * 4 - 2,
+            'xv': Math.random() * 0.5 - 0.2,
+            'yv': Math.random() * 0.5 - 0.2,
         },
         {
             'x': w / 2 + 50,
             'y': h / 2 + 170,
             'r': 8,
-            'color': '#cedff3',
-            'xv': Math.random() * 4 - 2,
-            'yv': Math.random() * 4 - 2,
+            'color': '#87c9ef',
+            'xv': Math.random() * 0.5 - 0.2,
+            'yv': Math.random() * 0.5 - 0.2,
         },
         {
             'x': 70,
             'y': h / 2 - 65,
             'r': 7,
             'color': '#cde1f5',
-            'xv': Math.random() * 4 - 2,
-            'yv': Math.random() * 4 - 2,
+            'xv': Math.random() * 0.5 - 0.2,
+            'yv': Math.random() * 0.5 - 0.2,
         },
         {
             'x': 12,
             'y': h / 2 - 35,
             'r': 6,
             'color': '#e2f3f9',
-            'xv': Math.random() * 4 - 2,
-            'yv': Math.random() * 4 - 2,
+            'xv': Math.random() * 0.5 - 0.2,
+            'yv': Math.random() * 0.5 - 0.2,
         },
         {
             'x': w / 2 + 50,
             'y': h - 20,
             'r': 6,
             'color': '#dcecf9',
-            'xv': Math.random() * 4 - 2,
-            'yv': Math.random() * 4 - 2,
+            'xv': Math.random() * 0.5 - 0.2,
+            'yv': Math.random() * 0.5 - 0.2,
         },
         {
             'x': w - 50,
             'y': h - 40,
             'r': 6,
             'color': '#dcecf9',
-            'xv': Math.random() * 4 - 2,
-            'yv': Math.random() * 4 - 2,
+            'xv': Math.random() * 0.5 - 0.2,
+            'yv': Math.random() * 0.5 - 0.2,
         },
 
 
@@ -293,7 +293,7 @@ function drawFinal() {
     for (var i = 0; i < particles.length; i++) {
         ctx.beginPath();
         if (Math.sqrt((canvasSizes.width / 2 - particles[i].x) * (canvasSizes.width / 2 - particles[i].x) + (canvasSizes.width / 2 - particles[i].y) * (canvasSizes.width / 2 - particles[i].y)) < 150 + particlesData[i].r) {
-            ctx.fillStyle = "#4694E2";
+            ctx.fillStyle = "#87c9ef";
             alpha = 1;
         } else {
             ctx.fillStyle = particlesData[i].color;
@@ -399,7 +399,7 @@ canvas.addEventListener('mousemove', throttle(function (e) {
         mouseX = e.clientX - rect.left;
         mouseY = e.clientY - rect.top;
 
-    if ((mouseX <= 300 && mouseX >= 200) && (mouseY <= 300 && mouseY >= 200)) {
+    if ((mouseX <= 300 && mouseX >= 150) && (mouseY <= 300 && mouseY >= 150)) {
         whenHoverOnCenter();
     } else {
         if (animationToCenter == true) {
@@ -411,6 +411,7 @@ canvas.addEventListener('mousemove', throttle(function (e) {
             startingPosition();
             createParticles();
             render();
+
         }
     }
 
@@ -421,83 +422,91 @@ startingPosition();
 createParticles();
 render();
 
-var two = new Two({
-    type: Two.Types.svg,
-    width: 500,
-    height: 500,
-}).appendTo(animationContainer);
 
-var mass = 300;
-var radius = 110;
-var strength = 0.1;
-var drag = 0.05;
 
-var background = two.makeGroup();
-var foreground = two.makeGroup();
+function animateCircles(strength) {
+    var two = new Two({
+        type: Two.Types.svg,
+        width: 400,
+        height: 400,
+    }).appendTo(animationContainer);
 
-var physics = new Physics();
-var points = [];
-var i = 0;
+    var mass = 100;
+    var radius = 110;
+    var drag = 0;
 
-for (i = 0; i < Two.Resolution; i++) {
+    var background = two.makeGroup();
+    var foreground = two.makeGroup();
 
-    var pct = i / Two.Resolution;
-    var theta = pct * Math.PI * 2;
+    var physics = new Physics();
+    var points = [];
+    var i = 0;
 
-    var ax = radius * Math.cos(theta);
-    var ay = radius * Math.sin(theta);
 
-    var variance = Math.random() * 0.5 + 0.5;
-    var bx = 0.96 * ax;
-    var by = 0.94 * ay;
+    for (i = 0; i < Two.Resolution; i++) {
 
-    var origin = physics.makeParticle(mass, ax, ay)
-    var particle = physics.makeParticle(Math.random() * mass * 0.33 + mass * 0.33, bx, by);
-    var spring = physics.makeSpring(particle, origin, strength, drag, 0);
+        var pct = i / Two.Resolution;
+        var theta = pct * Math.PI * 2;
 
-    origin.makeFixed();
+        var ax = radius * Math.cos(theta);
+        var ay = radius * Math.sin(theta);
 
-    particle.shape = two.makeCircle(particle.position.x, particle.position.y, 5);
-    particle.shape.noStroke().fill = '#fff';
-    particle.position = particle.shape.translation;
+        var variance = Math.random() * 0.5 + 0.5;
+        var bx = 0.96 * ax;
+        var by = 0.94 * ay;
 
-    foreground.add(particle.shape)
-    points.push(particle.position);
+        console.log('hey');
 
+        var origin = physics.makeParticle(mass, ax, ay)
+        var particle = physics.makeParticle(Math.random() * mass * 0.33 + mass * 0.33, bx, by);
+        var spring = physics.makeSpring(particle, origin, strength, drag, 0);
+
+        origin.makeFixed();
+
+        particle.shape = two.makeCircle(particle.position.x, particle.position.y, 5);
+        particle.shape.noStroke().fill = '#fff';
+        particle.position = particle.shape.translation;
+
+        foreground.add(particle.shape)
+        points.push(particle.position);
+
+    }
+
+    var radius = 90;
+    var stops = [
+        new Two.Stop(0, 'rgba(193, 221, 249, 1)'),
+        new Two.Stop(2, 'rgba(193, 221, 249, 0)')
+    ];
+
+    var outer = new Two.Path(points, true, true);
+    var color = '#eff6fd';
+    outer.stroke = '#87c9ef';
+    outer.fill = new Two.RadialGradient(0, 0, radius, stops);
+    outer.scale = 1.4;
+    outer.linewidth = 1;
+
+    background.add(outer);
+
+    var inner = new Two.Path(points, true, true);
+    inner.noStroke();
+    inner.fill = '#87c9ef';
+    inner.scale = 0.35;
+
+    background.add(inner);
+
+    resize();
+
+    function resize() {
+        background.translation.set(two.width / 2, two.height / 2);
+        foreground.translation.copy(background.translation);
+    }
+
+    two
+        .bind('resize', resize)
+        .bind('update', function () {
+            physics.update();
+        })
+        .play()
 }
 
-var radius = 90;
-var stops = [
-    new Two.Stop(0, 'rgba(193, 221, 249, 1)'),
-    new Two.Stop(2, 'rgba(193, 221, 249, 0)')
-];
-
-var outer = new Two.Path(points, true, true);
-var color = '#eff6fd';
-outer.stroke = '#4694E2';
-outer.fill = new Two.RadialGradient(0, 0, radius, stops);
-outer.scale = 1.4;
-outer.linewidth = 3;
-
-background.add(outer);
-
-var inner = new Two.Path(points, true, true);
-inner.noStroke();
-inner.fill = '#4694E2';
-inner.scale = 0.35;
-
-background.add(inner);
-
-resize();
-
-function resize() {
-    background.translation.set(two.width / 2, two.height / 2);
-    foreground.translation.copy(background.translation);
-}
-
- two
-     .bind('resize', resize)
-     .bind('update', function () {
-         physics.update();
-     })
-     .play()
+animateCircles(0.05);
