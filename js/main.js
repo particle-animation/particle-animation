@@ -385,13 +385,24 @@ function run_once(f) {
 
 var animationToCenter;
 
+
+
+
+
 var whenHoverOnCenter = run_once(function () {
     continueAnimating = false;
     stopFinalAnimation = false;
     animationToCenter = true;
     pct = 0;
     renderToCenter();
+    canvas.physics = physics;
+    var canvasSprings = physics.springs;
+    canvasSprings.map( spring => {
+        spring['constant'] = 500;
+        spring['mass'] = 100;
+    })
 });
+
 
 canvas.addEventListener('mousemove', throttle(function (e) {
     // important: correct mouse position:
@@ -424,16 +435,17 @@ render();
 
 
 
-function animateCircles(strength) {
+
     var two = new Two({
         type: Two.Types.svg,
         width: 400,
         height: 400,
     }).appendTo(animationContainer);
 
-    var mass = 100;
+    var mass = 500;
     var radius = 110;
     var drag = 0;
+    var strength = 0.05;
 
     var background = two.makeGroup();
     var foreground = two.makeGroup();
@@ -443,7 +455,7 @@ function animateCircles(strength) {
     var i = 0;
 
 
-    for (i = 0; i < Two.Resolution; i++) {
+    for (i = 0; i < 40; i++) {
 
         var pct = i / Two.Resolution;
         var theta = pct * Math.PI * 2;
@@ -458,7 +470,7 @@ function animateCircles(strength) {
         console.log('hey');
 
         var origin = physics.makeParticle(mass, ax, ay)
-        var particle = physics.makeParticle(Math.random() * mass * 0.33 + mass * 0.33, bx, by);
+        var particle = physics.makeParticle(Math.random() * mass * 3 + mass * 0.33, bx, by);
         var spring = physics.makeSpring(particle, origin, strength, drag, 0);
 
         origin.makeFixed();
@@ -501,12 +513,10 @@ function animateCircles(strength) {
         foreground.translation.copy(background.translation);
     }
 
+
     two
         .bind('resize', resize)
         .bind('update', function () {
             physics.update();
         })
         .play()
-}
-
-animateCircles(0.05);
