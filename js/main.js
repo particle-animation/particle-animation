@@ -323,7 +323,7 @@ function moveFinal() {
             dx = w / 2 - particles[i].x;
             dy = h / 2 - particles[i].y;
 
-            speedFactor = 50 * ((i+1)/5);
+            speedFactor = 30 * ((i+1)/5);
 
             // update
             particles[i].x += dx / speedFactor;
@@ -385,22 +385,12 @@ function run_once(f) {
 
 var animationToCenter;
 
-
-
-
-
 var whenHoverOnCenter = run_once(function () {
     continueAnimating = false;
     stopFinalAnimation = false;
     animationToCenter = true;
     pct = 0;
     renderToCenter();
-    canvas.physics = physics;
-    var canvasSprings = physics.springs;
-    canvasSprings.map( spring => {
-        spring['constant'] = 500;
-        spring['mass'] = 100;
-    })
 });
 
 
@@ -422,7 +412,6 @@ canvas.addEventListener('mousemove', throttle(function (e) {
             startingPosition();
             createParticles();
             render();
-
         }
     }
 
@@ -432,9 +421,6 @@ canvas.addEventListener('mousemove', throttle(function (e) {
 startingPosition();
 createParticles();
 render();
-
-
-
 
     var two = new Two({
         type: Two.Types.svg,
@@ -454,8 +440,8 @@ render();
     var points = [];
     var i = 0;
 
-
-    for (i = 0; i < 40; i++) {
+    var pointsCoordinates = [];
+    for (i = 0; i < Two.Resolution; i++) {
 
         var pct = i / Two.Resolution;
         var theta = pct * Math.PI * 2;
@@ -463,11 +449,11 @@ render();
         var ax = radius * Math.cos(theta);
         var ay = radius * Math.sin(theta);
 
+        pointsCoordinates.push([ax,ay]);
+
         var variance = Math.random() * 0.5 + 0.5;
         var bx = 0.96 * ax;
         var by = 0.94 * ay;
-
-        console.log('hey');
 
         var origin = physics.makeParticle(mass, ax, ay)
         var particle = physics.makeParticle(Math.random() * mass * 3 + mass * 0.33, bx, by);
@@ -506,12 +492,14 @@ render();
 
     background.add(inner);
 
-    resize();
+
 
     function resize() {
         background.translation.set(two.width / 2, two.height / 2);
         foreground.translation.copy(background.translation);
     }
+
+    resize();
 
 
     two
