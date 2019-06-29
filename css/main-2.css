@@ -79,9 +79,9 @@ body, html {
     }
 }
 
-.shake-animate  {
+.shake-animate {
     animation-name: shake-crazy;
-    animation-duration: 2ms;
-    animation-timing-function: ease;
-    animation-iteration-count: infinite
+    animation-duration: 300ms;
+    animation-timing-function: cubic-bezier(0.95, 0.05, 0.795, 0.035);
+    animation-iteration-count: infinite;
 }
