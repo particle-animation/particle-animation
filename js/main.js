@@ -392,10 +392,10 @@ var whenHoverOnCenter = run_once(function () {
     pct = 0;
     renderToCenter();
     var svgCircle = document.querySelector('.particle-animation svg');
-    svgCircle.classList.toggle('shake-animate');
+
+    setTimeout(function () { svgCircle.classList.toggle('shake-animate'); }, 500);
+
 });
-
-
 
 canvas.addEventListener('mousemove', throttle(function (e) {
     // important: correct mouse position:
